@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace Delopgave14
+namespace Delopgave2
 {
     class BlueColorConverterID007 : IValueConverter
     {
