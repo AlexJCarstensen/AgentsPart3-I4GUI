@@ -31,9 +31,11 @@ namespace Delopgave4
 
         private void AddAgent()
         {
-            Add(new Agent());
-            NotifyPropertyChanged("Count");
-            CurrentIndex = Count - 1;
+            Agent newAgent = new Agent();
+            Add(newAgent);
+            CurrentAgent = newAgent;
+            NotifyPropertyChanged("Count"); ;
+            
         }
 
         private ICommand _deleteCommand;
@@ -51,7 +53,7 @@ namespace Delopgave4
 
         private void AgentDelete()
         {
-            RemoveAt(CurrentIndex);
+            Remove(CurrentAgent);
             NotifyPropertyChanged("Count");
 
         }
@@ -221,6 +223,21 @@ namespace Delopgave4
             }
         }
 #endregion //Properties
+
+        private Agent _currentAgent = null;
+
+        public Agent CurrentAgent
+        {
+            get { return _currentAgent; }
+            set
+            {
+                if (_currentAgent != value)
+                {
+                    _currentAgent = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
 #region INotifyPropertyChanged implemetation
 

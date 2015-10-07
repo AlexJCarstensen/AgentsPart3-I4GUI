@@ -1,4 +1,4 @@
-﻿<Window x:Class="Delopgave3.MainWindow"
+﻿<Window x:Class="Delopgave4.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -106,12 +106,27 @@
                 <Image Source="Images/Delete.jpg"
                        Stretch="Uniform"></Image>
             </Button>
+            
             <Label Content="File Name:"
                    FontWeight="Bold"></Label>
+            
             <TextBox x:Name="tbxFileName"
                      MinWidth="100"
                      Background="White"
                      Style="{StaticResource TextboxStyle}"></TextBox>
+            
+            <Label Content="Sort Order"></Label>
+            
+            <ComboBox Width="100"
+                      x:Name="SortOrderCombo"
+                      SelectedIndex="0"
+                      FontSize="10"
+                      SelectionChanged="SortOrderCombo_OnSelectionChanged">
+                <ComboBoxItem Tag="None">None</ComboBoxItem>
+                <ComboBoxItem Tag="ID">ID</ComboBoxItem>
+                <ComboBoxItem Tag="CodeName">CodeName</ComboBoxItem>
+                <ComboBoxItem Tag="Speciality">Speciality</ComboBoxItem>
+            </ComboBox>
         </ToolBar>
 
         <Grid DockPanel.Dock="Top">
@@ -189,6 +204,7 @@
                      Name="lsbNames"
                      ItemsSource="{Binding}"
                      SelectedIndex="{Binding Path=CurrentIndex}"
+                     SelectedItem="{Binding Path=CurrentAgent}"
                      IsSynchronizedWithCurrentItem="True"
                      ItemTemplate="{StaticResource agentTemplate}"></ListBox>
         </Grid>
